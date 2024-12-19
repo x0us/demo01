@@ -7,20 +7,24 @@
     <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <title>sjius</title>
-  <script type="module" crossorigin src="/assets/index-1FwYl4y7.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-C8zDUo_8.css">
+  <script type="module" crossorigin src="/assets/index-B3CBbFNd.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-CfUf-BF-.css">
   <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
   <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
 </head>
-<body x-data="menuHandler()" class="m-0">
+<body x-data="menuHandler()" x-data="i18nApp()" class="m-0">
     <nav id="navbar" class="z-5 text-white border-b-1 border-b-solid border-b-[#fff3] w-full min-h-[88px] flex fixed inset-y-0 inset-t-0 inset-b-auto transition-all duration-300">
         <div class="container mx-auto flex justify-between items-center">
             <img class="w-20 object-cover ml-4" src="img/logo.png">
             <div class="hidden md:flex space-x-14 items-center justify-center">
-                <template x-for="(item, index) in menuItems" :key="index" x-init="$nextTick(() => getMenuItems())">
-                    <a :href="item.href" x-text="item.label" class="text-inherit no-underline transition-opacity duration-[250ms] hover:opacity-70"></a>
+                <template x-for="(item, index) in $t('menu')" :key="index" x-init="$nextTick(() => getMenuItems())">
+                    <a 
+                    :href="item.href" 
+                    x-text="$t(item.label)" 
+                    :class="index === $t('menu').length - 1 
+                    ? 'bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300'
+                    : 'text-inherit no-underline transition-opacity duration-[250ms] hover:opacity-70'"></a>
                 </template>
-                <a class="bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300" href="#">获取报价</a>
             </div>
             <button @click="toggleMenu" id="menu-toggle" class="md:hidden mr-4">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -38,8 +42,12 @@
                 </svg>
             </button>
             <div class="flex flex-col space-y-8">
-                <template x-for="(item, index) in menuItems" :key="index">
-                    <a :href="item.href" x-text="item.label" class="menu-item text-inherit opacity-0 no-underline transition-opacity duration-[250ms] hover:opacity-70"></a>
+                <template x-for="(item, index) in $t('menu')" :key="index">
+                    <a 
+                    :href="item.href" 
+                    x-text="$t(item.label)" 
+                    x-show="index !== $t('menu').length - 1"
+                    class="menu-item text-inherit opacity-0 no-underline transition-opacity duration-[250ms] hover:opacity-70"></a>
                 </template>
             </div>
         </div>
@@ -63,11 +71,11 @@
         <div class="bg-[#0000001a] relative inset-0">
             <div class="flex items-center w-full max-w-[1140px] min-h-[900px] mx-auto px-[15px]">
                 <div class="w-full max-w-[625px]">
-                    <h1 class="text-white mb-10 text-7xl leading-[1.2]">Full Sustainable Cargo Solutions</h1>
-                    <p class="mb-2 text-base leading-[1.7] text-white">Representative logistics operator providing full range of service in the sphere of customs clearance and transportation worldwide.</p>
+                    <h1 class="text-white mb-10 text-7xl leading-[1.2]" x-text="$t('index.hero.heading')"></h1>
+                    <p class="mb-2 text-base leading-[1.7] text-white" x-text="$t('index.hero.description')"></p>
                     <div class="mt-10">
-                        <a class="bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300" href="#">Our Services</a>
-                        <a class="bg-white px-8 py-5 text-stone-9 no-underline hover:bg-red-600 hover:text-white duration-300 ml-4" href="#">About US</a>
+                        <a class="bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300" href="#" x-text="$t('index.hero.buttons.ourServices')"></a>
+                        <a class="bg-white px-8 py-5 text-stone-9 no-underline hover:bg-red-600 hover:text-white duration-300 ml-4" href="#" x-text="$t('index.hero.buttons.aboutUs')"></a>
                     </div>
                 </div>
             </div>
@@ -77,123 +85,75 @@
         <div class="container mx-auto max-w-7xl relative min-h-screen">
             <div class="absolute top-0 left-0 right-0 mt-10 md:-mt-[100px] hidden md:block">
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
-                    <div class="bg-[url('/img/shelves.jpeg')] bg-center bg-no-repeat bg-cover">
-                        <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                            <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_delivery_fork_lift_forklift_warehouse_moving_box_.png">
-                            <h4 class="text-white text-3xl font-bold">Warehousing Services</h4>
+                    <template x-for="item in $t('index.section1.cards')">
+                        <div :class="`bg-[url('${item.bgUrl}')] bg-center bg-no-repeat bg-cover`">
+                            <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
+                                <img :src="item.imageUrl" class="max-w-full w-[60px] h-[59px] mr-[20px]" alt="item Icon">
+                                <h4 class="text-white text-3xl font-bold" x-text="item.title"></h4>
+                            </div>
                         </div>
-                    </div>
-                    <div class="bg-[url('/img/shipping.jpeg')] bg-center bg-no-repeat bg-cover">
-                        <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                            <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_ship_Freight_logistic_sea_transport.png">
-                            <h4 class="text-white text-3xl font-bold">Ocean Freight Services</h4>
-                        </div>
-                    </div>
-                    <div class="bg-[url('/img/aeroport.jpeg')] bg-center bg-no-repeat bg-cover">
-                        <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                            <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_travel_air_plane_flight_world.png">
-                            <h4 class="text-white text-3xl font-bold">Air Freight Services</h4>
-                        </div>
-                    </div>
+                    </template>
                 </div>
                 <div class="grid grid-cols-3 grid-rows-2 gap-0 mt-32 px-4">
                     <div class="text-dark-900 row-span-2">
-                        <h1>Global Logistics Solutions</h1>
+                        <h1 x-text="$t('index.section2.heading')"></h1>
                     </div>
                     <div class="col-span-2 text-stone-400">
-                        <h5>Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze, develop and implement successful supply chain management strategies from end-to-end.Vehicles traveling on these networks may include of the automobiles, buses, trains, trucks, helicopters, watercraft world wide services provider.</h5>
+                        <h5 x-text="$t('index.section2.description')"></h5>
                     </div>
-                    <div class="col-start-2 row-start-2 text-stone-400 pt-8"><p class="font-bold text-xs">JONATAN DAVIS</p></div>
+                    <div class="col-start-2 row-start-2 text-stone-400 pt-8"><p class="font-bold text-xs" x-text="$t('index.section2.signature.name')"></p></div>
                     <div class="col-start-3 row-start-2 grid">
                         <img src="/img/Boss_Signature.png" class="justify-self-end">
                     </div>
                 </div>
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mt-32">
-                    <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/drone_delivery_shipping_box.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                        <img src="/img/iconfinder_drone_delivery_shipping_box.png">
-                        <h3 class="my-4 font-bold">Drone<br> Delivery</h3>
-                        <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology &amp; customized logistics solutions will help you analyze.</p>
-                        <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                        </span></a>
-                    </div>
-                    <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/tracking.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                        <img src="/img/base_tracking.png">
-                        <h3 class="my-4 font-bold">Global Tracking<br> System</h3>
-                        <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze.</p>
-                        <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                        </span></a>
-                    </div>
-                    <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/ezgif.com-gif-maker.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                        <img src="/img/fast.png">
-                        <h3 class="my-4 font-bold">The Fastest<br> Delivery Ever</h3>
-                        <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze.</p>
-                        <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                            <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                        </span></a>
-                    </div>
+                     <template x-for="card in $t('index.section3.cards')">
+                        <div :class="`bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('${card.bgUrl}')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]`">
+                            <img :src="card.img">
+                            <h3 class="my-4 font-bold" x-html="$t(card.title)"></h3>
+                            <p class="text-stone-400 text-size-sm" x-text="$t(card.description)"></p>
+                            <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center" x-text="$t(card.learMore)"><span class="pl-4 pt-1">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
+                            </span></a>
+                        </div>
+                     </template>
                 </div>
             </div>
             <div class="mt-10 md:hidden">
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
-                  <div class="bg-[url('/img/shelves.jpeg')] bg-center bg-no-repeat bg-cover">
-                      <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                          <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_delivery_fork_lift_forklift_warehouse_moving_box_.png">
-                          <h4 class="text-white text-3xl font-bold">Warehousing Services</h4>
-                      </div>
-                  </div>
-                  <div class="bg-[url('/img/shipping.jpeg')] bg-center bg-no-repeat bg-cover">
-                      <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                          <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_ship_Freight_logistic_sea_transport.png">
-                          <h4 class="text-white text-3xl font-bold">Ocean Freight Services</h4>
-                      </div>
-                  </div>
-                  <div class="bg-[url('/img/aeroport.jpeg')] bg-center bg-no-repeat bg-cover">
-                      <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
-                          <img class="max-w-full w-[60px] h-[59px] mr-[20px]" src="/img/iconfinder_travel_air_plane_flight_world.png">
-                          <h4 class="text-white text-3xl font-bold">Air Freight Services</h4>
-                      </div>
-                  </div>
-              </div>
-              <div class="grid grid-cols-3 grid-rows-2 gap-0 mt-32 px-4">
-                  <div class="text-dark-900 row-span-2">
-                      <h1>Global Logistics Solutions</h1>
-                  </div>
-                  <div class="col-span-2 text-stone-400">
-                      <h5>Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze, develop and implement successful supply chain management strategies from end-to-end.Vehicles traveling on these networks may include of the automobiles, buses, trains, trucks, helicopters, watercraft world wide services provider.</h5>
-                  </div>
-                  <div class="col-start-2 row-start-2 text-stone-400 pt-8"><p class="font-bold text-xs">JONATAN DAVIS</p></div>
-                  <div class="col-start-3 row-start-2 grid">
-                      <img src="/img/Boss_Signature.png" class="justify-self-end">
-                  </div>
-              </div>
-              <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mt-32">
-                  <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/drone_delivery_shipping_box.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                      <img src="/img/iconfinder_drone_delivery_shipping_box.png">
-                      <h3 class="my-4 font-bold">Drone<br> Delivery</h3>
-                      <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology &amp; customized logistics solutions will help you analyze.</p>
-                      <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                          <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                      </span></a>
-                  </div>
-                  <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/tracking.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                      <img src="/img/base_tracking.png">
-                      <h3 class="my-4 font-bold">Global Tracking<br> System</h3>
-                      <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze.</p>
-                      <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                          <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                      </span></a>
-                  </div>
-                  <div class="bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('img/ezgif.com-gif-maker.png')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]">
-                      <img src="/img/fast.png">
-                      <h3 class="my-4 font-bold">The Fastest<br> Delivery Ever</h3>
-                      <p class="text-stone-400 text-size-sm">Our global logistics expertise, advanced supply chain technology & customized logistics solutions will help you analyze.</p>
-                      <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center">Learn More<span class="pl-4 pt-1">
-                          <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
-                      </span></a>
-                  </div>
-              </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-4">
+                    <template x-for="item in $t('index.section1.cards')">
+                        <div :class="`bg-[url('${item.bgUrl}')] bg-center bg-no-repeat bg-cover`">
+                            <div class="bg-[#121c45] p-[62px_30px] flex hover:bg-[#ff3f39cc] transition-colors duration-300">
+                                <img :src="item.imageUrl" class="max-w-full w-[60px] h-[59px] mr-[20px]" alt="item Icon">
+                                <h4 class="text-white text-3xl font-bold" x-text="item.title"></h4>
+                            </div>
+                        </div>
+                    </template>
+                </div>
+                <div class="grid grid-cols-3 grid-rows-2 gap-0 mt-32 px-4">
+                    <div class="text-dark-900 row-span-2">
+                        <h1 x-text="$t('index.section2.heading')"></h1>
+                    </div>
+                    <div class="col-span-2 text-stone-400">
+                        <h5 x-text="$t('index.section2.description')"></h5>
+                    </div>
+                    <div class="col-start-2 row-start-2 text-stone-400 pt-8"><p class="font-bold text-xs" x-text="$t('index.section2.signature.name')"></p></div>
+                    <div class="col-start-3 row-start-2 grid">
+                        <img src="/img/Boss_Signature.png" class="justify-self-end">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mt-32">
+                     <template x-for="card in $t('index.section3.cards')">
+                        <div :class="`bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] hover:bg-[url('${card.bgUrl}')] hover:[background-position:115%_15%] hover:bg-no-repeat hover:bg-[length:40%]`">
+                            <img :src="card.img">
+                            <h3 class="my-4 font-bold" x-html="$t(card.title)"></h3>
+                            <p class="text-stone-400 text-size-sm" x-text="$t(card.description)"></p>
+                            <a href="#" class="text-[#ff3f39] pt-6 text-xs font-[400] no-underline transition-colors duration-300 flex items-center" x-text="$t(card.learMore)"><span class="pl-4 pt-1">
+                                <svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" width="24" height="24"><path d="M481.834667 737.834667l60.330666 60.330666L828.330667 512l-286.165334-286.165333-60.330666 60.330666L665.002667 469.333333H256v85.333334h409.002667z" fill="#ff3f39"></path></svg>
+                            </span></a>
+                        </div>
+                     </template>
+                </div>
             </div>
         </div>
     </div>
@@ -205,20 +165,40 @@
                 <img src="img/logo-white.png" class="h-20 mr-3" alt="sjius Logo" />
               </a>
             </div>
-            <div class="grid grid-cols-2 gap-8 sm:gap-6 sm:grid-cols-3">
-              <template x-for="(item, index) in footerItems" :key="index">
-                <div class="text-white">
-                  <h2 class="mb-6 text-sm font-semibold uppercase" x-text="item.title"></h2>
-                  <ul class="font-medium">
-                    <template x-for="(link, linkIndex) in item.links" :key="linkIndex">
-                      <li class="mb-4 list-none text-sm">
-                        <a :href="link.href" class="no-underline text-stone-500 transition-color duration-[250ms] hover:text-white" x-text="link.lable"></a>
-                      </li>
+            <div class="grid grid-cols-3 gap-4 sm:gap-24 sm:grid-cols-3 text-white">
+              <template x-for="(item, index) in $t('footer')" :key="index">
+                <div>
+                    <template x-if="index < 2">
+                        <div class="text-white">
+                            <h2 class="mb-6 text-sm font-semibold uppercase" x-text="item.title"></h2>
+                            <ul class="font-medium">
+                              <template x-for="(link, linkIndex) in item.links" :key="linkIndex"  x-effect="item.links">
+                                <li class="mb-4 list-none text-sm">
+                                  <a :href="link.href" class="no-underline text-stone-500 transition-color duration-[250ms] hover:text-white" x-text="getTranslatedText(link.lable)"></a>
+                                </li>
+                              </template>
+                            </ul>
+                          </div>
                     </template>
-                  </ul>
+                    <template x-if="index == 2">
+                        <div class="text-white">
+                            <h2 class="mb-6 text-sm font-semibold uppercase" x-text="item.title"></h2>
+                            <ul class="font-medium">
+                              <template x-for="(link, linkIndex) in item.links" :key="linkIndex">
+                                <li class="mb-4 list-none text-sm">
+                                  <a href="void();" class="no-underline text-stone-500 transition-color duration-[250ms] hover:text-white" x-text="$t(link.lable)" @click.prevent="changeLanguage(link.code)"></a>
+                                </li>
+                              </template>
+                            </ul>
+                        </div>
+                    </template>
                 </div>
-              </template>
 
+
+
+
+
+              </template>
             </div>
           </div>
           <div class="sm:flex sm:items-center sm:justify-between">
@@ -287,7 +267,7 @@
         requestAnimationFrame(raf);
     </script>
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-6HVKTbcD.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-B9UfHKD9.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-DYko0y1y.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-BNnLQb1Y.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>
