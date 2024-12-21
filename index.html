@@ -5,56 +5,68 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://unpkg.com/flickity@2/dist/flickity.min.css">
     <link rel="stylesheet" href="https://unpkg.com/flickity-fade@2/flickity-fade.css">
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.18/dist/lenis.css">
     <title>sjius</title>
-  <script type="module" crossorigin src="/assets/index-BEwiXbbd.js"></script>
-  <link rel="stylesheet" crossorigin href="/assets/index-D3ey9owD.css">
+  <script type="module" crossorigin src="/assets/index-BcBuy3FW.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-BZyrtDLF.css">
   <script type="module">import.meta.url;import("_").catch(()=>1);(async function*(){})().next();if(location.protocol!="file:"){window.__vite_is_modern_browser=true}</script>
   <script type="module">!function(){if(window.__vite_is_modern_browser)return;console.warn("vite: loading legacy chunks, syntax error above and the same error below should be ignored");var e=document.getElementById("vite-legacy-polyfill"),n=document.createElement("script");n.src=e.src,n.onload=function(){System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))},document.body.appendChild(n)}();</script>
 </head>
 <body x-data="menuHandler()" x-data="i18nApp()">
-    <nav id="navbar" class="z-5 text-white border-b-1 border-b-solid border-b-[#fff3] w-full min-h-[88px] flex fixed inset-y-0 inset-t-0 inset-b-auto transition-all duration-300">
-        <div class="container mx-auto flex justify-between items-center">
-            <img class="w-20 object-cover ml-4" src="img/logo.png">
-            <div class="hidden md:flex space-x-14 items-center justify-center">
-                <template x-for="(item, index) in $t('menu')" :key="index" x-init="$nextTick(() => getMenuItems())">
-                    <a 
-                    :href="item.href" 
-                    x-text="$t(item.label)" 
-                    :class="index === $t('menu').length - 1 
-                    ? 'bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300'
-                    : 'text-inherit no-underline transition-opacity duration-[250ms] hover:opacity-70'"></a>
-                </template>
+    <div x-on:click.away="closeMenu()">
+        <nav id="navbar" class="z-5 text-white border-b-1 border-b-solid border-b-[#fff3] w-full min-h-[88px] flex fixed inset-y-0 inset-t-0 inset-b-auto transition-all duration-300">
+            <div class="container mx-auto flex justify-between items-center">
+                <img class="w-20 object-cover ml-4" src="img/logo.png">
+                <div class="hidden md:flex space-x-14 items-center justify-center">
+                    <template x-for="(item, index) in $t('menu')" :key="index" x-init="$nextTick(() => getMenuItems())">
+                        <a 
+                        @click="scrollToSection(item.id)"
+                        :href="item.href" 
+                        x-text="$t(item.label)" 
+                        :class="index === $t('menu').length - 1 
+                        ? 'bg-red-600 px-8 py-5 text-red-100 no-underline hover:bg-red-500 transition duration-300'
+                        : 'text-inherit no-underline transition-opacity duration-[250ms] hover:opacity-70'"></a>
+                    </template>
+                </div>
+                <button @click="toggleMenu" id="menu-toggle" class="md:hidden mr-4">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                    </svg>
+                </button>
             </div>
-            <button @click="toggleMenu" id="menu-toggle" class="md:hidden mr-4">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
-                </svg>
-            </button>
-        </div>
-    </nav>
+        </nav>
 
-    <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-[#121c45] text-white transform translate-x-full transition-transform duration-300 ease-in-out md:hidden z-10">
-        <div class="p-4">
-            <button id="close-menu" class="mb-4" @click="closeMenu">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-                </svg>
-            </button>
-            <div class="flex flex-col space-y-8">
-                <template x-for="(item, index) in $t('menu')" :key="index">
-                    <a 
-                    :href="item.href" 
-                    x-text="$t(item.label)" 
-                    x-show="index !== $t('menu').length - 1"
-                    class="menu-item text-inherit opacity-0 no-underline transition-opacity duration-[250ms] hover:opacity-70"></a>
-                </template>
+        <div id="mobile-menu" class="fixed top-0 right-0 h-full w-64 bg-[#121c45] text-white translate-x-full md:hidden z-10" >
+            <div class="p-4 h-[96%]">
+                <button id="close-menu" class="mb-4" @click="closeMenu">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+                <div class="flex flex-col h-full">
+                    <!-- 菜单部分 -->
+                    <div class="flex flex-col space-y-8">
+                    <template x-for="(item, index) in $t('menu')" :key="index">
+                        <div class="menu-item flex justify-between items-center text-white transition-opacity duration-[250ms] group">
+                        <img :src="item.icon" class="w-5 group-hover:filter group-hover:brightness-60" />
+                        <a 
+                            @click="scrollToSection(item.id)"
+                            :href="item.href" 
+                            x-text="$t(item.label)" 
+                            x-show="index !== $t('menu').length - 1"
+                            class="text-inherit no-underline group-hover:text-stone-4">
+                        </a>
+                        </div>
+                    </template>
+                    </div>
+                
+                    <!-- Logo部分，使用 margin-top: auto 将其推到底部 -->
+                    <img src="img/logo-white.png" class="w-full h-auto mt-auto filter opacity-50">
+                </div>
             </div>
         </div>
     </div>
-
     <div id="mask" class="fixed inset-0 bg-black opacity-0 pointer-events-none transition-opacity duration-300 ease-in-out z-5"></div>
-    <div class="w-full relative">
+    <div id="home" class="w-full relative">
         <div class="flex absolute inset-0">
             <div class="carousel">
               <div class="carousel-cell h-full">
@@ -130,7 +142,7 @@
         </div>
     </div>
     <!--section form-->
-    <div class="bg-[url('img/shelves.jpeg')] bg-center bg-no-repeat bg-cover bg-fixed mt-50">
+    <div id="services" class="bg-[url('img/shelves.jpeg')] bg-center bg-no-repeat bg-cover bg-fixed mt-50">
         <div class="bg-[#121c45e6]">
             <div class="relative max-w-[1140px] mx-auto px-4 -top-30" x-data="{ activeTab: 0 }">
                 <div class="bg-[#001d67]">
@@ -295,7 +307,7 @@
         </div>
     </div>
 
-    <div class="max-w-7xl mx-auto relative" x-cloak>
+    <div id="about" class="max-w-7xl mx-auto relative">
         <div x-ref="flickity" class="w-full">
             <div class="w-full flex flex-col md:flex-row gap-8 p-8">
                 <div class="flex-1 relative">
@@ -569,7 +581,7 @@
 
 
 
-    <footer class="bg-gray-900">
+    <footer id="contact" class="bg-gray-900">
         <div class="mx-auto w-full max-w-screen-xl p-4 py-6 lg:py-8">
           <div class="md:flex md:justify-between">
             <div class="mb-6 md:mb-0">
@@ -640,7 +652,6 @@
           </div>
         </div>
     </footer>
-    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
     <script src="https://unpkg.com/flickity@2/dist/flickity.pkgd.min.js"></script>
     <script src="https://unpkg.com/flickity-fade@1/flickity-fade.js"></script>
     <script>
@@ -656,31 +667,9 @@
             pageDots: false,
             prevNextButtons: false, // 移除左右翻页按钮
         })
-
-        const navbar = document.getElementById('navbar');
-        const lenis = new Lenis();
-
-        lenis.on('scroll', (e) => {
-            const scrollY = e.animatedScroll;
-
-            if (scrollY > 160) {
-                navbar.classList.add('bg-white', 'text-black');
-                navbar.classList.remove('bg-transparent', 'text-white');
-            } else {
-                navbar.classList.remove('bg-white', 'text-black');
-                navbar.classList.add('bg-transparent', 'text-white');
-            }
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-
-        requestAnimationFrame(raf);
     </script>
   <script nomodule>!function(){var e=document,t=e.createElement("script");if(!("noModule"in t)&&"onbeforeload"in t){var n=!1;e.addEventListener("beforeload",(function(e){if(e.target===t)n=!0;else if(!e.target.hasAttribute("nomodule")||!n)return;e.preventDefault()}),!0),t.type="module",t.src=".",e.head.appendChild(t),t.remove()}}();</script>
-  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-tUM7Vy6f.js"></script>
-  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-ChvpLb4R.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
+  <script nomodule crossorigin id="vite-legacy-polyfill" src="/assets/polyfills-legacy-B0o-0T3m.js"></script>
+  <script nomodule crossorigin id="vite-legacy-entry" data-src="/assets/index-legacy-vQ4ktdIA.js">System.import(document.getElementById('vite-legacy-entry').getAttribute('data-src'))</script>
 </body>
 </html>
