@@ -16,7 +16,7 @@ export default function App() {
   useLenis()
   return (
     <RootProvider>
-      <Router
+      <Router base={import.meta.env.SERVER_BASE_URL}
         root={props => (
           <>
             <Nav />
