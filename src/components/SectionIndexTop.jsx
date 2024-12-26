@@ -1,4 +1,4 @@
-import { createMemo, For } from 'solid-js'
+import { createMemo, For, createSignal, onCleanup, onMount } from 'solid-js'
 import { useI18n } from '~/i18n/usei18n.hook'
 
 export default function SectionIndexTop() {
@@ -6,13 +6,54 @@ export default function SectionIndexTop() {
   const data = createMemo(() => t('cardService'))
   const cards = createMemo(() => t('sectionIntro.cards'))
 
+  const [isTopVisible, setIsTopVisible] = createSignal(false)
+  const [isCarVisible, setIsCarVisible] = createSignal(false)
+  let topRefs;
+  let carRefs;
+
+  onMount(() => {
+    if (typeof IntersectionObserver !== 'undefined') {
+
+      const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.target.id === 'topRefs') {
+            
+            if (entry.isIntersecting) {
+      
+              setIsTopVisible(true)
+            } else {
+              setIsTopVisible(false)
+        
+            }
+          } else if (entry.target.id === 'carRefs') {
+            if (entry.isIntersecting) {
+              setIsCarVisible(true)
+            } else {
+              setIsCarVisible(false)
+            }
+          }})
+        })
+
+      // 观察每个卡片
+      observer.observe(topRefs)
+      observer.observe(carRefs)
+
+      onCleanup(() => {
+        observer.disconnect()
+        // carObserver.disconnect()
+      })
+    }
+  })
+
   return (
     <div class="bg-no-repeat bg-cover w-full relative bg-[url('/img/WorlMap.png')] bgPositionChange -mt-25">
       <div class="mx-auto relative container max-w-7xl min-h-screen">
-        <div class="grid gap-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
+        <div id="topRefs" class="grid gap-4 px-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3" ref={topRefs}>
           <For each={data()}>
             {(item, index) => (
-              <div class={`bg-center bg-no-repeat bg-cover ${item.bgUrl}`}>
+              <div class={`bg-center bg-no-repeat bg-cover ${item.bgUrl} ${isTopVisible() ? `animate__animated animate__fadeInUp` : ''}`} style={{ 'animation-delay': `${index() * 0.1}s` }}>
                 <div class="flex items-center transition-colors duration-300 h-full bg-[#121c45] p-[62px_30px] hover:bg-[#ff3f39cc]">
                   <img class="max-w-full w-[60px] h-[59px] mr-[20px]" alt={item.title} src={item.imageUrl} />
                   <h4 class="text-white font-bold text-3xl" innerHTML={item.title} />
@@ -39,11 +80,13 @@ export default function SectionIndexTop() {
           </div>
         </div>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mt-32">
+        <div id="carRefs" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 px-4 mt-32" ref={carRefs}>
           <For each={cards()}>
             {(card, index) => (
               <div
+                style={{ 'animation-delay': `${index() * 0.1}s` }}
                 class={`bg-repeat bg-auto transition-all duration-300 bg-white p-[50px_30px] shadow-[7px_7px_50px_#0000001a] 
+                        ${isCarVisible() ? 'animate__animated animate__fadeInUp' : ''}
                         ${index() === 0 ? 'drone' : ''} 
                         ${index() === 1 ? 'tracking' : ''} 
                         ${index() === 2 ? 'fast' : ''}`}

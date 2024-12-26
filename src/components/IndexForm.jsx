@@ -1,10 +1,14 @@
 import { createForm, getValue } from '@modular-forms/solid'
-import { createSignal, For, onMount } from 'solid-js'
+import { createSignal, For, onMount, onCleanup, createEffect } from 'solid-js'
 import { useI18n } from '~/i18n/usei18n.hook'
 import { useToast } from './ToastNotification'
 
 export default function IndexForm() {
+  // 创建引用数组
+  const circleRefs = [createSignal(null), createSignal(null), createSignal(null)];
+
   const [activeTab, setActiveTab] = createSignal(0)
+  const [isVisible, setIsVisible] = createSignal(false)
   const { showToast } = useToast()
   let circle1, circle2, circle3
 
@@ -27,42 +31,81 @@ export default function IndexForm() {
   })
 
   const animateProgress = (element, index) => {
-    const circle = element.querySelector('.progress-circle')
-    const percentageSpan = element.querySelector('.percentage-text span')
-    const duration = 1500
-    const circleCircumference = 2 * Math.PI * 15
+    if (!element) {
+        console.error(`Element for index ${index} is undefined`);
+        return; // 退出函数，避免后续错误
+    }
+    
+    const circle = element.querySelector('.progress-circle');
+    const percentageSpan = element.querySelector('.percentage-text span');
+    const duration = 1500;
+    const circleCircumference = 2 * Math.PI * 15;
 
-    // 根据索引设置不同的目标百分比
-    const finalPercentages = [99, 97, 95]
-    const finalPercentage = finalPercentages[index]
+    const finalPercentages = [99, 97, 95];
+    const finalPercentage = finalPercentages[index];
 
-    const startTime = performance.now()
-    const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2
+    const startTime = performance.now();
+    const easeInOut = t => t < 0.5 ? 4 * t * t * t : 1 - (-2 * t + 2) ** 3 / 2;
 
     const updateProgress = (currentTime) => {
-      const elapsed = currentTime - startTime
-      const progress = Math.min(elapsed / duration, 1)
-      const easedProgress = easeInOut(progress)
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        const easedProgress = easeInOut(progress);
 
-      const currentPercentage = Math.round(easedProgress * finalPercentage)
-      percentageSpan.textContent = currentPercentage
+        const currentPercentage = Math.round(easedProgress * finalPercentage);
+        percentageSpan.textContent = currentPercentage;
 
-      const dashLength = (circleCircumference * currentPercentage / 100)
-      circle.style.strokeDasharray = `${dashLength}, ${circleCircumference - dashLength}`
+        const dashLength = (circleCircumference * currentPercentage / 100);
+        circle.style.strokeDasharray = `${dashLength}, ${circleCircumference - dashLength}`;
 
-      if (progress < 1)
-        requestAnimationFrame(updateProgress)
-    }
+        if (progress < 1)
+            requestAnimationFrame(updateProgress);
+    };
 
-    requestAnimationFrame(updateProgress)
+    requestAnimationFrame(updateProgress);
   }
 
+ let customer;
   onMount(() => {
-    // 使用数组批量处理动画
-    [circle1, circle2, circle3].forEach((circle, index) => {
-      animateProgress(circle, index)
-    })
+    // circleRefs.forEach(([getRef]) => {
+    //   test = getRef(); // 检查是否成功获取 DOM 节点
+    // });
+
+    if (typeof IntersectionObserver !== 'undefined') {
+
+      const observer = new IntersectionObserver((entries) => {
+
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            setIsVisible(true)
+            
+          } else {
+            setIsVisible(false)
+          }
+          })
+        })
+
+      // 观察每个卡片
+      observer.observe(customer)
+
+      onCleanup(() => {
+        observer.disconnect()
+        // carObserver.disconnect()
+      })
+    }
   })
+
+// 使用 createEffect 监听 isVisible 的变化
+createEffect(() => {
+  if (isVisible()) {
+    // 执行动画逻辑
+    circleRefs.forEach(([getRef], index) => {
+      const element = getRef(); // 获取对应的 DOM 节点
+      if (element) {
+        animateProgress(element, index); // 调用 animateProgress 为该元素执行动画
+      }
+    });
+}})
 
   const [t] = useI18n()
 
@@ -220,64 +263,35 @@ export default function IndexForm() {
 
         </div>
 
-        <div class="max-w-[1140px] mx-auto px-4 pb-50">
+        <div class="max-w-[1140px] mx-auto px-4 pb-50" ref={customer}>
           <div class="flex flex-col lg:flex-row items-center justify-between">
             <div>
               <h1 class="text-white font-bold text-4xl text-center md:text-left" innerHTML={t('chart.title')} />
             </div>
-            <div class="flex justify-between">
-              <div class="relative max-w-60">
-                <div class="relative m-5" ref={circle1}>
-                  <div class="flex justify-center items-center circle-progress">
-                    <svg viewBox="0 0 33 33" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle fill="none" cx="16" cy="16" r="15" />
-                      <circle class="progress-circle" stroke="#ff3f39" stroke-dasharray="0, 94.2" fill="none" cx="16" cy="16" r="15" />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col justify-center items-center w-full absolute max-w-[300px] inset-0">
-                    <div class="text-sm text-white font-bold md:text-4xl percentage-text">
-                      <span>0</span>
-                      <span>%</span>
+              <div class="flex justify-between">
+                {[[circleRefs[0], 'chart.one'], [circleRefs[1], 'chart.two'], [circleRefs[2], 'chart.three']].map(([circleRef, chartKey]) => (
+                  <div class={`max-w-60 relative ${isVisible() ? `animate__animated animate__fadeInUp` : ''}`}>
+                    <div
+                      class="relative m-5"
+                      ref={el => circleRef[1](el)} // 通过回调函数设置 ref
+                    >
+                      <div class="flex justify-center items-center circle-progress">
+                        <svg viewBox="0 0 33 33" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <circle fill="none" cx="16" cy="16" r="15" />
+                          <circle class="progress-circle" stroke="#ff3f39" stroke-dasharray="0, 94.2" fill="none" cx="16" cy="16" r="15" />
+                        </svg>
+                      </div>
+                      <div class="flex flex-col justify-center items-center w-full max-w-[300px] absolute inset-0">
+                        <div class="text-sm text-white md:text-4xl font-bold percentage-text">
+                          <span>0</span>
+                          <span>%</span>
+                        </div>
+                      </div>
                     </div>
+                    <h5 class="text-white text-xl font-bold text-center">{t(chartKey)}</h5>
                   </div>
-                </div>
-                <h5 class="text-white font-bold text-center text-xl">{t('chart.one')}</h5>
+                ))}
               </div>
-              <div class="max-w-60 relative">
-                <div class="relative m-5" ref={circle2}>
-                  <div class="flex justify-center items-center circle-progress">
-                    <svg viewBox="0 0 33 33" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle fill="none" cx="16" cy="16" r="15" />
-                      <circle class="progress-circle" stroke="#ff3f39" stroke-dasharray="0, 94.2" fill="none" cx="16" cy="16" r="15" />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col justify-center items-center w-full max-w-[300px] absolute inset-0">
-                    <div class="text-sm text-white md:text-4xl font-bold percentage-text">
-                      <span>0</span>
-                      <span>%</span>
-                    </div>
-                  </div>
-                </div>
-                <h5 class="text-white text-xl font-bold text-center">{t('chart.two')}</h5>
-              </div>
-              <div class="max-w-60 relative">
-                <div class="relative m-5" ref={circle3}>
-                  <div class="flex justify-center items-center circle-progress">
-                    <svg viewBox="0 0 33 33" width="100%" height="100%" fill="none" xmlns="http://www.w3.org/2000/svg">
-                      <circle fill="none" cx="16" cy="16" r="15" />
-                      <circle class="progress-circle" stroke="#ff3f39" stroke-dasharray="0, 94.2" fill="none" cx="16" cy="16" r="15" />
-                    </svg>
-                  </div>
-                  <div class="flex flex-col justify-center items-center w-full max-w-[300px] absolute inset-0">
-                    <div class="text-sm text-white md:text-4xl font-bold percentage-text">
-                      <span>0</span>
-                      <span>%</span>
-                    </div>
-                  </div>
-                </div>
-                <h5 class="text-white text-xl font-bold text-center">{t('chart.three')}</h5>
-              </div>
-            </div>
           </div>
         </div>
 

@@ -59,31 +59,31 @@ export default function Warehouse() {
             </div>
 
             <div class="relative mt-20">
-              <div
+            <div
                 ref={tabsContainerRef}
-                class="grid grid-cols-3 sm:flex justify-between sm:flex-wrap gap-2 sm:gap-4 pb-0.5"
+                class="grid grid-cols-3 sm:flex justify-between sm:flex-wrap sm:gap-4 pb"
               >
-                <For each={data()}>
-                  {(tab, index) => (
-                    <button
-                      data-index={index()}
-                      role="tab"
-                      aria-selected={activeTab() === index()}
-                      aria-controls={`tabpanel-${index()}`}
-                      tabIndex={activeTab() === index() ? 0 : -1}
-                      class={`py-2 px-3 text-sm font-medium tracking-wider transition-colors duration-200 focus:outline-none ${
-                        index() > 2 ? 'col-span-1 sm:col-span-auto' : ''
-                      } ${
-                        activeTab() === index()
-                          ? 'text-white'
-                          : 'text-stone-600 hover:text-blue-400'
-                      }`}
-                      onClick={() => setActiveTab(index())}
-                    >
-                      {tab.name}
-                    </button>
-                  )}
-                </For>
+                  <For each={data()}>
+                    {(tab, index) => (
+                      <button
+                        data-index={index()}
+                        role="tab"
+                        aria-selected={activeTab() === index()}
+                        aria-controls={`tabpanel-${index()}`}
+                        tabIndex={activeTab() === index() ? 0 : -1}
+                        class={`text-center py-4 px-4 text-sm font-medium tracking-wider transition-colors duration-200 sm:border-none focus:outline-none ${
+                          index() > 2 ? 'col-span-1 sm:col-span-auto' : ''
+                        } ${
+                          activeTab() === index()
+                            ? 'text-white'
+                            : 'text-stone-600 hover:text-blue-600'
+                        } ${index() < 6 ? 'border-b border-blue-800' : 'border-r border-blue-800'} ${![0, 3, 6].includes(index()) ? 'border-l border-blue-800' : ''}`} // 添加底部边框和右边框，0,3,6不添加左边框
+                        onClick={() => setActiveTab(index())}
+                      >
+                        {tab.name}
+                      </button>
+                    )}
+                  </For>
               </div>
               <div
                 ref={indicatorRef}

@@ -9,6 +9,8 @@ export default defineConfig({
   }
   ,
   vite: {
-    plugins: [UnoCSS()],
+    plugins: [
+      UnoCSS()
+    ]
   },
 })

@@ -1,3 +1,4 @@
+import { MetaProvider, Link } from "@solidjs/meta";
 import { Router } from '@solidjs/router'
 import { FileRoutes } from '@solidjs/start/router'
 import { Suspense } from 'solid-js'
@@ -18,11 +19,12 @@ export default function App() {
     <RootProvider>
       <Router base={import.meta.env.SERVER_BASE_URL}
         root={props => (
-          <>
+          <MetaProvider>
+            <Link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
             <Nav />
             <Suspense>{props.children}</Suspense>
             <Footer />
-          </>
+          </MetaProvider>
         )}
       >
         <FileRoutes />
