@@ -46,7 +46,7 @@ export default function Warehouse() {
 
   return (
     <>
-      <div class="bg-center bg-no-repeat bg-cover bg-fixed text-white bg-[url('img/aeroport.jpeg')]">
+      <div id="about" class="bg-center bg-no-repeat bg-cover bg-fixed text-white bg-[url('img/aeroport.jpeg')]">
         <div class="bg-[#121c45e6] pb-25">
           <div class="mx-auto px-4 sm:px-12 xl:max-w-6xl xl:px-0">
             <div class="pt-40 text-center">

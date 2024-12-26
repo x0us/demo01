@@ -221,6 +221,32 @@ const homeCnLocale = {
       },
     ],
   },
+  question: {
+    heading: "客户常见问题",
+    subtitle: "如果您不方便使用线上查询，可以直接拨打我们的24小时客服热线，提供您的运单号，由客服人员为您查询并解答相关问题。对于一些特殊的运输情况，如国际运输或多站中转，我们也会定期发送短信或邮件提醒，确保您随时掌握货物动态。",
+    contents: [
+      {
+        question: "如何查询货物运输状态？",
+        answer: "您可通过官网或客服热线提供运单号查询货物实时状态。登录官网后，进入‘运单查询’页面，输入运单号即可查看详细物流信息。如果需要更具体的帮助，可以拨打我们的24小时客服热线，我们将为您提供及时解答，确保您的货物运输无忧。",
+      },
+      {
+        question: "运输费用如何计算？",
+        answer: "运输费用依据货物的重量、体积以及运输距离综合计算。特殊情况下，例如需要冷链运输或大件货物装卸服务，也会影响费用标准。您可以通过我们的在线工具计算预估费用，或联系专业客服获取详细报价和个性化运输方案。",
+      },
+      {
+        question: "是否提供货物保险？",
+        answer: "公司提供多种货物运输保险服务，您可以根据货物价值选择最适合的保险方案。保险范围通常涵盖运输过程中可能发生的损失或意外情况。我们建议您投保货物保险以减少风险，具体费用和条款请咨询客服或查看官网相关信息。",
+      },
+      {
+        question: "可以送货上门吗？",
+        answer: "我们提供送货上门服务，可将货物安全、快捷地送达您指定的地址。此服务需提前预约，并可能根据目的地距离和货物特性收取额外费用。请提前与我们的客服人员确认详细地址和收费标准，以便安排高效的配送服务。",
+      },
+      {
+        question: "货物丢失如何赔偿？",
+        answer: "如因运输原因导致货物丢失，我们将根据货物投保情况或公司相关规定进行赔偿。您需要提供运单号和相关凭证以便核实具体情况。客服人员将协助您完成赔偿申请并提供后续支持，确保您的权益得到保障。",
+      },
+    ]
+  }
 }
 const homeEnLocale = {
   warehouseSection: {
@@ -445,6 +471,32 @@ const homeEnLocale = {
       },
     ],
   },
+  question: {
+    heading: "Customer FAQs",
+    subtitle: "If you are unable to use online tracking, you can call our 24-hour customer service hotline and provide your tracking number for assistance. For special shipping scenarios, such as international transportation or multi-stop transits, we will also send periodic SMS or email notifications to ensure you stay updated on your shipment's status.",
+    contents: [
+      {
+        question: "How can I track my shipment?",
+        answer: "You can track your shipment by providing the tracking number through our website or customer service hotline. Log in to our website, go to the 'Track Shipment' page, and enter your tracking number to view detailed logistics information. If you need further assistance, you can call our 24-hour customer service hotline, and we will ensure your shipment is tracked with ease and reliability.",
+      },
+      {
+        question: "How are shipping costs calculated?",
+        answer: "Shipping costs are calculated based on the weight, volume, and distance of the shipment. Special circumstances, such as cold chain transportation or handling oversized items, may also affect the pricing. You can use our online calculator for an estimated cost or contact our professional customer service team for detailed quotes and tailored shipping solutions.",
+      },
+      {
+        question: "Do you provide cargo insurance?",
+        answer: "Yes, we offer various cargo insurance options. You can choose the most suitable plan based on the value of your shipment. The insurance typically covers losses or damages that may occur during transit. We recommend purchasing cargo insurance to minimize risks. Please contact our customer service team or visit our website for specific costs and terms.",
+      },
+      {
+        question: "Do you offer door-to-door delivery?",
+        answer: "We provide door-to-door delivery services, ensuring your shipment reaches your specified address safely and efficiently. This service requires prior booking and may involve additional fees depending on the destination and shipment characteristics. Please confirm the details and charges with our customer service team in advance to arrange a smooth delivery process.",
+      },
+      {
+        question: "What happens if my shipment is lost?",
+        answer: "If your shipment is lost during transit, we will compensate you based on the insurance coverage or the company's policies. You will need to provide the tracking number and relevant documents for verification. Our customer service team will assist you with the claims process and offer further support to ensure your rights are protected.",
+      },
+    ]
+  }
 }
 const homeRuLocale = {
   warehouseSection: {
@@ -669,6 +721,32 @@ const homeRuLocale = {
       },
     ],
   },
+  question: {
+    heading: "Часто задаваемые вопросы клиентов",
+    subtitle: "Если вы не можете воспользоваться онлайн-отслеживанием, вы можете позвонить на нашу круглосуточную горячую линию и предоставить номер вашей накладной для получения помощи. В случае особых транспортных ситуаций, таких как международные перевозки или многоэтапная доставка, мы также будем регулярно отправлять SMS или электронные уведомления, чтобы вы всегда были в курсе статуса вашего груза.",
+    contents: [
+      {
+        question: "Как отследить мой груз?",
+        answer: "Вы можете отследить ваш груз, предоставив номер накладной через наш сайт или круглосуточную горячую линию. Войдите на наш сайт, перейдите на страницу 'Отслеживание груза' и введите номер накладной, чтобы просмотреть подробную информацию о логистике. Если вам потребуется дополнительная помощь, вы можете позвонить на нашу круглосуточную горячую линию, и мы обеспечим надежное и удобное отслеживание вашего груза.",
+      },
+      {
+        question: "Как рассчитывается стоимость доставки?",
+        answer: "Стоимость доставки рассчитывается на основе веса, объема и расстояния перевозки. Особые обстоятельства, такие как необходимость холодовой цепи или обработка крупногабаритных грузов, также могут повлиять на цену. Вы можете воспользоваться нашим онлайн-калькулятором для предварительной оценки или обратиться к нашей профессиональной службе поддержки для получения детализированного расчета и индивидуального решения.",
+      },
+      {
+        question: "Предоставляете ли вы страховку груза?",
+        answer: "Да, мы предлагаем различные варианты страхования грузов. Вы можете выбрать наиболее подходящий план в зависимости от стоимости вашего груза. Страховка обычно покрывает убытки или повреждения, которые могут произойти во время транспортировки. Мы рекомендуем оформить страховку груза для минимизации рисков. Пожалуйста, свяжитесь с нашей службой поддержки или посетите наш сайт для получения подробной информации о стоимости и условиях.",
+      },
+      {
+        question: "Осуществляете ли вы доставку на дом?",
+        answer: "Мы предоставляем услуги доставки на дом, гарантируя безопасное и эффективное прибытие вашего груза по указанному адресу. Эта услуга требует предварительного бронирования и может включать дополнительные сборы в зависимости от расстояния и характеристик груза. Пожалуйста, уточните детали и стоимость с нашей службой поддержки заранее, чтобы организовать бесперебойную доставку.",
+      },
+      {
+        question: "Что делать, если мой груз потерялся?",
+        answer: "Если ваш груз был утерян во время перевозки, мы компенсируем ущерб в соответствии с условиями страхования или политиками компании. Вам нужно будет предоставить номер накладной и соответствующие документы для проверки. Наша служба поддержки поможет вам с процессом подачи заявления на компенсацию и окажет дальнейшую помощь для защиты ваших прав.",
+      },
+    ]
+  }
 }
 const locationCnLocale = {
   locations: [
@@ -806,7 +884,7 @@ const menuCnLocale = {
     { label: '服务', href: '#', icon: 'img/truck.svg', id: 'services' },
     { label: '关于我们', href: '#', icon: 'img/about.svg', id: 'about' },
     { label: '联系方式', href: '#', icon: 'img/contact.svg', id: 'contact' },
-    { label: '获取报价', href: '#', icon: '', id: '' },
+    { label: '获取报价', href: '#', icon: '', id: 'contact' },
   ],
 }
 const menuEnLocale = {
@@ -815,7 +893,7 @@ const menuEnLocale = {
     { label: 'Services', href: '#', icon: 'img/truck.svg', id: 'services' },
     { label: 'About Us', href: '#', icon: 'img/about.svg', id: 'about' },
     { label: 'Contact', href: '#', icon: 'img/contact.svg', id: 'contact' },
-    { label: 'Get a Quote', href: '#', icon: '', id: '' },
+    { label: 'Get a Quote', href: '#', icon: '', id: 'contact' },
   ],
 }
 const menuRnLocale = {
@@ -824,7 +902,7 @@ const menuRnLocale = {
     { label: 'Услуги', href: '#', icon: 'img/truck.svg', id: 'services' },
     { label: 'О нас', href: '#', icon: 'img/about.svg', id: 'about' },
     { label: 'Контакты', href: '#', icon: 'img/contact.svg', id: 'contact' },
-    { label: 'Получить предложение', href: '#', icon: '', id: '' },
+    { label: 'Получить предложение', href: '#', icon: '', id: 'contact' },
   ],
 }
 

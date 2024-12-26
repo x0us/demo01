@@ -22,7 +22,13 @@ export default function TopCarousel() {
       prevNextButtons: false,
     })
   })
-
+  const scrollToSection = (id) => {
+    const section = document.getElementById(id);
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+  
   return (
     <div id="home" class="w-full relative">
       {/* Carousel Section */}
@@ -50,12 +56,12 @@ export default function TopCarousel() {
             </p>
             <div class="mt-10">
               <For each={[
-                { text: t('hero.buttons.ourServices'), classes: 'bg-red-600 hover:bg-red-500 text-red-100' },
-                { text: t('hero.buttons.aboutUs'), classes: 'bg-white hover:bg-red-600 hover:text-white text-stone-9 ml-4' },
+                { text: t('hero.buttons.ourServices'), classes: 'bg-red-600 hover:bg-red-500 text-red-100', id:'services' },
+                { text: t('hero.buttons.aboutUs'), classes: 'bg-white hover:bg-red-600 hover:text-white text-stone-9 ml-4', id:'contact' },
               ]}
               >
-                {({ text, classes }) => (
-                  <button class={`px-8 py-5 no-underline transition duration-300 ${classes}`}>
+                {({ text, classes, id }) => (
+                  <button class={`px-8 py-5 no-underline transition duration-300 ${classes}`} onClick={() => scrollToSection(id)}>
                     {text}
                   </button>
                 )}
