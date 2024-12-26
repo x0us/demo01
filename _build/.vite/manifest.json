@@ -1,6 +1,6 @@
 {
-  "_ToastNotification-COfjmr36.js": {
-    "file": "assets/ToastNotification-COfjmr36.js",
+  "_ToastNotification-CfLqEHBd.js": {
+    "file": "assets/ToastNotification-CfLqEHBd.js",
     "name": "ToastNotification",
     "imports": [
       "_web-D7fBE1_y.js"
@@ -48,14 +48,14 @@
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-BMxJC2Lc.js",
+    "file": "assets/index-089aXQah.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_web-D7fBE1_y.js",
-      "_ToastNotification-COfjmr36.js"
+      "_ToastNotification-CfLqEHBd.js"
     ],
     "dynamicImports": [
       "_index-usasvoE1.js",
@@ -63,13 +63,13 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CKa_prZD.js",
+    "file": "assets/client-B8I8LxmQ.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
       "_web-D7fBE1_y.js",
-      "_ToastNotification-COfjmr36.js",
+      "_ToastNotification-CfLqEHBd.js",
       "_routing-CRu70en8.js"
     ],
     "dynamicImports": [
