@@ -106,7 +106,7 @@ export default function Nav() {
                 {(item, index) => (
                   <div
                     class="flex justify-between items-center text-white duration-[250ms] menu-item transition-opacity group"
-                    onClick={() => scrollToSection(item.id)}
+                    onClick={() => {scrollToSection(item.id);setMenuOpen(false)}}
                   >
                     <img src={item.icon} class="w-5 group-hover:filter group-hover:brightness-60" alt={item.label} />
                     <a
