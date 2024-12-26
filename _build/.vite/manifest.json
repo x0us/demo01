@@ -48,7 +48,7 @@
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-089aXQah.js",
+    "file": "assets/index-CAUgiR36.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
@@ -63,7 +63,7 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-B8I8LxmQ.js",
+    "file": "assets/client-tiiRTjTM.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
@@ -78,7 +78,7 @@
       "node_modules/lenis/dist/lenis.mjs"
     ],
     "css": [
-      "assets/client-O7DWdfBs.css"
+      "assets/client-yXF6i2p6.css"
     ]
   }
 }
