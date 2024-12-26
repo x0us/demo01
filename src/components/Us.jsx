@@ -7,7 +7,7 @@ export default function ChooseUs() {
     const features = createMemo(() => t('chooseUs.features'))
 
     return(
-        <div class="bg-no-repeat bg-cover w-full relative bg-[url('/img/WorlMap.png')]">
+        <div id="about" class="bg-no-repeat bg-cover w-full relative bg-[url('/img/WorlMap.png')]">
             <div class="mb-30 pt-30 px-4">
                 <div class="max-w-7xl flex flex-col px-4 mx-auto md:flex-row">
                     <div class="w-full lg:w-[45%] pr-5 pb-10">
@@ -28,9 +28,5 @@ export default function ChooseUs() {
                 </div>
             </div>        
         </div>
-
-        
-
-
     )
 }

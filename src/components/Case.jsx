@@ -19,6 +19,13 @@ export default function CaseShow() {
     )
   }
 
+  const imageSrc = [
+    'https://assets.volvo.com/is/image/VolvoInformationTechnologyAB/volvo-fh-electric-cgi-exterior-1?qlt=82&wid=1024&ts=1705312480003&dpr=off&fit=constrain&fmt=png-alpha',
+    'img/benz-axor-png.png',
+    'img/pngegg.png',
+    'img/benz-axor-png.png',
+  ]
+
   return (
     <div class="bg-center bg-no-repeat bg-cover w-full relative mb-24">
       <div class="max-w-[1230px] mx-auto px-4">
@@ -29,11 +36,11 @@ export default function CaseShow() {
           {/* Current slide */}
           <div class="w-full flex flex-col md:flex-row gap-8 p-8">
             <div class="relative flex-1">
-              <div class="w-full relative">
+              <div class="relative">
                 <img
-                  src="https://assets.volvo.com/is/image/VolvoInformationTechnologyAB/volvo-fh-electric-cgi-exterior-1?qlt=82&wid=1024&ts=1705312480003&dpr=off&fit=constrain&fmt=png-alpha"
+                  src={imageSrc[currentIndex()]}
                   alt="volvo truck"
-                  class="w-full h-auto object-cover rounded-lg -scale-x-100"
+                  class="w-full h-auto object-cover rounded-lg -scale-x-100 h-200px"
                 />
               </div>
               <div class="flex absolute bottom-5 left-5 gap-2.5 z-10">
