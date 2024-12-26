@@ -1,9 +1,9 @@
 {
-  "_ToastNotification-CfLqEHBd.js": {
-    "file": "assets/ToastNotification-CfLqEHBd.js",
+  "_ToastNotification-BOxrSVir.js": {
+    "file": "assets/ToastNotification-BOxrSVir.js",
     "name": "ToastNotification",
     "imports": [
-      "_web-D7fBE1_y.js"
+      "_web-DtrJmZ4c.js"
     ]
   },
   "_flickity-fade-D8UIeQf8.js": {
@@ -19,15 +19,15 @@
     "name": "index",
     "isDynamicEntry": true
   },
-  "_routing-CRu70en8.js": {
-    "file": "assets/routing-CRu70en8.js",
+  "_routing-BbvjVDuv.js": {
+    "file": "assets/routing-BbvjVDuv.js",
     "name": "routing",
     "imports": [
-      "_web-D7fBE1_y.js"
+      "_web-DtrJmZ4c.js"
     ]
   },
-  "_web-D7fBE1_y.js": {
-    "file": "assets/web-D7fBE1_y.js",
+  "_web-DtrJmZ4c.js": {
+    "file": "assets/web-DtrJmZ4c.js",
     "name": "web"
   },
   "node_modules/lenis/dist/lenis.mjs": {
@@ -37,25 +37,25 @@
     "isDynamicEntry": true
   },
   "src/routes/[...404].jsx?pick=default&pick=$css": {
-    "file": "assets/_...404_-aqNUNBHL.js",
+    "file": "assets/_...404_-BGt5Q17s.js",
     "name": "_...404_",
     "src": "src/routes/[...404].jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_web-D7fBE1_y.js",
-      "_routing-CRu70en8.js"
+      "_web-DtrJmZ4c.js",
+      "_routing-BbvjVDuv.js"
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-CAUgiR36.js",
+    "file": "assets/index-DldM7g6F.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_web-D7fBE1_y.js",
-      "_ToastNotification-CfLqEHBd.js"
+      "_web-DtrJmZ4c.js",
+      "_ToastNotification-BOxrSVir.js"
     ],
     "dynamicImports": [
       "_index-usasvoE1.js",
@@ -63,14 +63,14 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-Bd8AxYfM.js",
+    "file": "assets/client-yJsD1O-A.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_web-D7fBE1_y.js",
-      "_ToastNotification-CfLqEHBd.js",
-      "_routing-CRu70en8.js"
+      "_web-DtrJmZ4c.js",
+      "_ToastNotification-BOxrSVir.js",
+      "_routing-BbvjVDuv.js"
     ],
     "dynamicImports": [
       "src/routes/[...404].jsx?pick=default&pick=$css",
@@ -78,7 +78,7 @@
       "node_modules/lenis/dist/lenis.mjs"
     ],
     "css": [
-      "assets/client-yXF6i2p6.css"
+      "assets/client-D-sd3gps.css"
     ]
   }
 }
