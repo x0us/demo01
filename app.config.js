@@ -1,5 +1,6 @@
 import { defineConfig } from '@solidjs/start/config'
 import UnoCSS from 'unocss/vite'
+import { viteStaticCopy } from 'vite-plugin-static-copy'
 
 export default defineConfig({
   ssr: true,
@@ -10,7 +11,15 @@ export default defineConfig({
   ,
   vite: {
     plugins: [
-      UnoCSS()
+      UnoCSS(),
+      viteStaticCopy({
+        targets: [
+          {
+            src: 'public/img/*',
+            dest: 'assets/img',
+          },
+        ],
+      })
     ]
   },
 })
