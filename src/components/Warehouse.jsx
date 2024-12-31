@@ -1,4 +1,4 @@
-import { createEffect, createMemo, createSignal, For, onCleanup } from 'solid-js'
+import { createEffect, createMemo, createSignal, For, onCleanup, onMount } from 'solid-js'
 import { createStore } from 'solid-js/store'
 import { useI18n } from '~/i18n/usei18n.hook' // Make sure to import the useI18n hook
 import { IconAddress, IconCar, IconPath } from '~/lib/svg'
@@ -14,6 +14,7 @@ export default function Warehouse() {
   })
   const [t] = useI18n()
   const data = createMemo(() => t('warehouse'))
+  const [imagesLoaded, setImagesLoaded] = createSignal(false)
 
   let tabsContainerRef
   let indicatorRef
@@ -43,6 +44,47 @@ export default function Warehouse() {
     window.addEventListener('resize', updateIndicator)
     onCleanup(() => window.removeEventListener('resize', updateIndicator))
   })
+
+  const preloadImages = () => {
+    const images = data().map(item => item.img)
+    let loadedCount = 0
+    
+    images.forEach(img => {
+      const image = new Image()
+      image.src = `img/${img}`
+      image.onload = () => {
+        loadedCount++
+        if (loadedCount === images.length) {
+          setImagesLoaded(true)
+        }
+      }
+    })
+  }
+
+  onMount(() => {
+    preloadImages()
+  })
+
+  const ImageSection = () => {
+    return (
+      <div class="overflow-hidden sm:px-12 md:w-1/2 -m-4 sm:-mx-12 md:mx-0 md:overflow-visible md:px-0">
+        <div class="relative bg-gray-100 before:absolute before:inset-0 before:scale-x-110 before:border-y before:border-gray-200 after:absolute after:inset-0 after:scale-y-110 after:border-x after:border-gray-200 dark:bg-gray-800 dark:before:border-gray-700 dark:after:border-gray-700">
+          <div class="relative">
+            <img 
+              src={`img/${data()[activeTab()].img}`} 
+              class={`mx-auto w-full border object-cover shadow-2xl dark:border-transparent min-h-[28rem] transition-opacity duration-300 ${imagesLoaded() ? 'opacity-100' : 'opacity-0'}`}
+              alt={data()[activeTab()].name} 
+            />
+            {!imagesLoaded() && (
+              <div class="absolute inset-0 flex items-center justify-center bg-gray-100 dark:bg-gray-800">
+                <div class="h-8 w-8 animate-spin rounded-full border-4 border-blue-500 border-t-transparent"></div>
+              </div>
+            )}
+          </div>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <>
@@ -129,11 +171,7 @@ export default function Warehouse() {
                   </div>
 
                 </div>
-                <div class="overflow-hidden sm:px-12 md:w-1/2 -m-4 sm:-mx-12 md:mx-0 md:overflow-visible md:px-0">
-                  <div class="relative bg-gray-100 before:absolute before:inset-0 before:scale-x-110 before:border-y before:border-gray-200 after:absolute after:inset-0 after:scale-y-110 after:border-x after:border-gray-200 dark:bg-gray-800 dark:before:border-gray-700 dark:after:border-gray-700">
-                    <img src={`img/${data()[activeTab()].img}`} class="mx-auto w-full border object-cover shadow-2xl dark:border-transparent min-h-[28rem]" alt="tailus screenshot" />
-                  </div>
-                </div>
+                <ImageSection />
               </div>
             </div>
           </div>

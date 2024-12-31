@@ -49,7 +49,7 @@ const homeCnLocale = {
         description: '斯堪尼亚R系列和S系列是其旗舰级重型卡车，R系列以强大的动力和燃油经济性著称，适合长途运输；S系列则更注重驾驶员的舒适性和安全性，拥有宽敞的驾驶室和先进的驾驶辅助系统，是高端长途运输的理想选择。',
       },
       {
-        name: '奔驰 <br> 系列',
+        name: '奔驰 <br> Actros Arocs 系列',
         description: '梅赛德斯-奔驰卡车以Actros、Arocs等系列闻名，提供重型、中型和轻型卡车，广泛应用于长途运输、建筑、市政等领域。其特点是技术先进、安全可靠、高效节能，是全球领先的商用车品牌之一。',
       },
     ],
@@ -293,7 +293,7 @@ const homeEnLocale = {
         description: 'The Scania R-Series and S-Series are flagship heavy-duty trucks. The R-Series is renowned for its powerful performance and fuel efficiency, ideal for long-haul transport, while the S-Series emphasizes driver comfort and safety with its spacious cab and advanced driver assistance systems, making it the perfect choice for premium long-distance transportation.',
       },
       {
-        name: 'Mercedes-Benz <br> Series',
+        name: 'Mercedes-Benz <br> Actros Arocs Series',
         description: 'Mercedes-Benz trucks, such as the Actros and Arocs series, are known for their advanced technology, safety, and efficiency. Widely used in long-distance transportation, construction, and municipal services, they are among the leading commercial vehicle brands worldwide.',
       },
     ],
@@ -537,7 +537,7 @@ const homeRuLocale = {
         description: 'Серии Scania R и S являются флагманами компании Scania. Серия R известна своей мощностью и топливной экономичностью, идеально подходит для дальних перевозок; серия S уделяет больше внимания комфорту и безопасности водителя, имеет просторную кабину и современные системы помощи водителю, что делает её идеальным выбором для премиальных перевозок.',
       },
       {
-        name: 'Mercedes-Benz <br> серия',
+        name: 'Mercedes-Benz <br> серия Actros и Arocs',
         description: 'Грузовики Mercedes-Benz, такие как Actros и Arocs, известны своей надежностью, безопасностью и высокой эффективностью. Они широко применяются в дальних перевозках, строительстве и муниципальных услугах. Эти грузовики представляют собой передовые технологии и экономию топлива, что делает их одним из ведущих брендов коммерческого транспорта в мире.',
       },
     ],
