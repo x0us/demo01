@@ -76,8 +76,8 @@ export default function Warehouse() {
                         } ${
                           activeTab() === index()
                             ? 'text-white'
-                            : 'text-stone-600 hover:text-blue-600'
-                        } ${index() < 6 ? 'border-b border-blue-800' : 'border-r border-blue-800'} ${![0, 3, 6].includes(index()) ? 'border-l border-blue-800' : ''}`} // 添加底部边框和右边框，0,3,6不添加左边框
+                            : 'text-blue-400 hover:text-red-600'
+                        } ${index() < 3 ? 'border-b border-blue-800' : ''} ${[1,4].includes(index()) ? 'border-l border-r border-blue-800' : ''}`} // 添加底部边框和右边框，0,3,6不添加左边框
                         onClick={() => setActiveTab(index())}
                       >
                         {tab.name}
@@ -105,12 +105,6 @@ export default function Warehouse() {
 
                           <IconCar size="w-6" color="#ffffff" />
                           <p>
-                            {data()[activeTab()].size}
-                            {' '}
-                            m
-                            <sup>2</sup>
-                            {' '}
-                            -
                             {' '}
                             {data()[activeTab()].capacity}
                             {' '}

@@ -34,7 +34,7 @@ export default function TopCarousel() {
       {/* Carousel Section */}
       <div class="absolute inset-0 flex">
         <div ref={carouselRef} class="carousel">
-          <For each={['img/s1.jpg', 'img/s2.png', 'img/s3.jpg']}>
+          <For each={['img/s1.jpg', 'img/s2.jpg', 'img/s3.jpg']}>
             {src => (
               <div class="h-full carousel-cell">
                 <img src={src} class="object-cover brightness-[0.5] contrast-[0.9]" alt="carousel item" />

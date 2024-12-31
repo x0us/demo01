@@ -1,23 +1,40 @@
-import { createMemo, createSignal } from 'solid-js'
+import { createMemo, createSignal, onCleanup, onMount } from 'solid-js'
 import { useI18n } from '~/i18n/usei18n.hook'
 
 export default function CaseShow() {
   const [t] = useI18n()
   const [currentIndex, setCurrentIndex] = createSignal(0)
+  const [isTransitioning, setIsTransitioning] = createSignal(false)
 
   const data = createMemo(() => t('carSection'))
 
+  const transition = (nextIdx) => {
+    if (isTransitioning()) return
+    setIsTransitioning(true)
+    
+    setTimeout(() => {
+      setCurrentIndex(nextIdx)
+      setTimeout(() => {
+        setIsTransitioning(false)
+      }, 50)
+    }, 300)
+  }
+
   const next = () => {
-    setCurrentIndex(prev =>
-      prev === data().content.length - 1 ? 0 : prev + 1,
-    )
+    const nextIdx = currentIndex() === data().content.length - 1 ? 0 : currentIndex() + 1
+    transition(nextIdx)
   }
 
   const previous = () => {
-    setCurrentIndex(prev =>
-      prev === 0 ? data().content.length - 1 : prev - 1,
-    )
+    const nextIdx = currentIndex() === 0 ? data().content.length - 1 : currentIndex() - 1
+    transition(nextIdx)
   }
+
+  // 自动轮播
+  onMount(() => {
+    const timer = setInterval(next, 3000)
+    onCleanup(() => clearInterval(timer))
+  })
 
   const imageSrc = [
     'https://assets.volvo.com/is/image/VolvoInformationTechnologyAB/volvo-fh-electric-cgi-exterior-1?qlt=82&wid=1024&ts=1705312480003&dpr=off&fit=constrain&fmt=png-alpha',
@@ -33,15 +50,20 @@ export default function CaseShow() {
           {data().title}
         </p>
         <div class="text-center bg-transparent">
-          {/* Current slide */}
           <div class="w-full flex flex-col md:flex-row gap-8 p-8">
             <div class="relative flex-1">
-              <div class="relative">
-                <img
-                  src={imageSrc[currentIndex()]}
-                  alt="volvo truck"
-                  class="w-[500px] h-[300px] object-cover rounded-lg -scale-x-100 h-200px"
-                />
+              <div class="relative h-[300px] w-[500px]">
+                <div
+                  class={`absolute w-full h-full transition-opacity duration-300 ease-in-out ${
+                    isTransitioning() ? 'opacity-0' : 'opacity-100'
+                  }`}
+                >
+                  <img
+                    src={imageSrc[currentIndex()]}
+                    alt="truck"
+                    class="w-full h-full object-cover rounded-lg -scale-x-100"
+                  />
+                </div>
               </div>
               <div class="flex absolute bottom-5 left-5 gap-2.5 z-10">
                 <button
@@ -62,11 +84,17 @@ export default function CaseShow() {
                 </button>
               </div>
             </div>
-            <div class="flex-1 flex flex-col justify-center pr-0 md:pr-8 text-left">
-              <h2 class="font-bold text-4xl mb-4 text-gray-800" innerHTML={data().content[currentIndex()].name} />
-              <p class="text-lg text-stone-400 mb-8 leading-relaxed">
-                {data().content[currentIndex()].description}
-              </p>
+            <div class="relative flex-1">
+              <div
+                class={`transition-opacity duration-300 ease-in-out ${
+                  isTransitioning() ? 'opacity-0' : 'opacity-100'
+                }`}
+              >
+                <h2 class="font-bold text-4xl mb-4 text-gray-800" innerHTML={data().content[currentIndex()].name} />
+                <p class="text-lg text-stone-400 mb-8 leading-relaxed">
+                  {data().content[currentIndex()].description}
+                </p>
+              </div>
             </div>
           </div>
         </div>

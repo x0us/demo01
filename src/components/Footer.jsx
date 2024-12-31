@@ -99,7 +99,7 @@ export default function Footer() {
             </a>
             <div class='text-white flex flex-col max-w-md'>
               <p class='text-xs'>{t('address')}</p>
-              <p class='text-xs'>+86 18482317559 15928802635</p>
+              <p class='text-xs'>+86 400-093-3939</p>
             </div>
           </div>
           <div class="text-white grid grid-cols-3 gap-4 sm:gap-24 sm:grid-cols-3">

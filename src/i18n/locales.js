@@ -2,8 +2,8 @@ const homeCnLocale = {
   address:"中国四川省成都市双流区成双大道南段1599号,中国(四川.双流) 二手车出口基地",
   warehouseSection: {
     heading: '优质仓库管理模式 智能仓库管理系统',
-    title: 'SJIUS深耕供应链行业多年，从供应端、物流、仓储、终端配送等多角度探索整个供应链条供需关系，推出供应链金融服务——庞大的美元金融池、快捷灵活的放款方式，提供可靠的进出口贸易双边金融服务',
-    description: '我司在现有霍尔果斯、莫斯科、汉堡、安特卫普、塔什干、比什凯克、阿拉木图七大境内外汽车监管仓的基础上，将持续开发-组建-完善“全球汽车监管仓库”网络。',
+    title: '我们的智能管理系统都能提供实时监控，确保物流流畅无阻。我们始终秉承着专业、可靠、高效的服务理念，致力于为客户提供全方位的物流支持，助力客户在激烈的市场竞争中脱颖而出。选择我们，选择更智能、更高效的未来！',
+    description: '我司在现有霍尔果斯、莫斯科、汉堡、安特卫普、比什凯克、阿拉木图七大境内外汽车监管仓的基础上，将持续开发-组建-完善“全球汽车监管仓库”网络。',
     extra: 'SJIUS践行高效定制化专业仓储，为每一辆汽车保驾护航，欢迎来自世界各地的汽车贸易商朋友交流垂询。',
   },
   comments: [
@@ -49,7 +49,7 @@ const homeCnLocale = {
         description: '斯堪尼亚R系列和S系列是其旗舰级重型卡车，R系列以强大的动力和燃油经济性著称，适合长途运输；S系列则更注重驾驶员的舒适性和安全性，拥有宽敞的驾驶室和先进的驾驶辅助系统，是高端长途运输的理想选择。',
       },
       {
-        name: '奔驰 <br> MAN系列',
+        name: '奔驰 <br> 系列',
         description: '梅赛德斯-奔驰卡车以Actros、Arocs等系列闻名，提供重型、中型和轻型卡车，广泛应用于长途运输、建筑、市政等领域。其特点是技术先进、安全可靠、高效节能，是全球领先的商用车品牌之一。',
       },
     ],
@@ -65,12 +65,12 @@ const homeCnLocale = {
   cardService: [
     {
       title: '仓储服务',
-      imageUrl: 'img/warehouse_new.png',
+      imageUrl: 'img/warehouse01.png',
       bgUrl: 'shelves',
     },
     {
       title: '陆运服务',
-      imageUrl: 'img/iconfinder_delivery_fork_lift_forklift_warehouse_moving_box_.png',
+      imageUrl: 'img/truck01.png',
       bgUrl: 'shipping',
     },
     {
@@ -125,7 +125,7 @@ const homeCnLocale = {
       comments: '备注信息,300字以内',
       submit: '提交询价',
       sidetitle: '国际贸易定制服务',
-      sidedescription: '我们专注于中亚及中国市场的国际贸易定制服务，为企业提供从市场调研、商务洽谈到供应链管理、报关物流的全流程解决方案。凭借对中亚区域市场的深入了解以及与中国供应链的紧密衔接，我们帮助客户高效拓展商机，优化成本与流程，确保交易顺畅。无论是跨境进出口贸易还是本地市场拓展，我们都致力于提供专业、可靠的一站式服务，助力您的国际业务成功。',
+      sidedescription: '我们专注于亚欧的国际贸易定制服务，为企业提供从市场调研、商务洽谈到供应链管理、报关物流的全流程解决方案。凭借对中亚区域市场的深入了解以及与中国供应链的紧密衔接，我们帮助客户高效拓展商机，优化成本与流程，确保交易顺畅。无论是跨境进出口贸易还是本地市场拓展，我们都致力于提供专业、可靠的一站式服务，助力您的国际业务成功。',
     },
     query: {
       tab: '物流查询',
@@ -170,13 +170,6 @@ const homeCnLocale = {
     size: '12000',
     capacity: '600',
     img: 'w04.jpg',
-  }, {
-    name: '塔什干',
-    address: '乌兹别克斯坦，塔什干，琥珀区',
-    extra: '距离塔什干市 28公里',
-    size: '11000',
-    capacity: '650',
-    img: 'w05.jpg',
   }, {
     name: '比什凯克',
     address: '塔赫米娜商店，索科卢克，吉尔吉斯斯坦',
@@ -253,7 +246,7 @@ const homeEnLocale = {
   address:"No. 1599, South Section of Chengshuang Avenue, Shuangliu District, Chengdu, Sichuan Province, China (Sichuan Shuangliu) Used Car Export Base",
   warehouseSection: {
     heading: 'High-Quality Warehouse Management Model and Intelligent Warehouse Management System',
-    title: 'SJIUS has been deeply involved in the supply chain industry for many years, exploring the supply-demand relationships of the entire supply chain from multiple perspectives, including supply, logistics, warehousing, and terminal distribution. We have launched supply chain financial services—a large USD financial pool and flexible loan solutions, providing reliable bilateral financial services for import and export trade.',
+    title: 'Our intelligent management system provides real-time monitoring to ensure smooth and uninterrupted logistics. We consistently adhere to a service philosophy that is professional, reliable, and efficient, dedicated to offering comprehensive logistics support to our clients. This helps our clients stand out in the competitive market. Choose us for a smarter and more efficient future!',
     description: 'Based on our existing seven domestic and international automobile supervision warehouses in Khorgos, Moscow, Hamburg, Antwerp, Tashkent, Bishkek, and Almaty, our company will continue to develop, build, and improve the \'Global Automobile Supervision Warehouse\' network.',
     extra: 'SJIUS provides efficient, customized, and professional warehousing services, ensuring the safety of every car. We welcome car traders from around the world to engage with us for inquiries and exchanges.',
   },
@@ -300,7 +293,7 @@ const homeEnLocale = {
         description: 'The Scania R-Series and S-Series are flagship heavy-duty trucks. The R-Series is renowned for its powerful performance and fuel efficiency, ideal for long-haul transport, while the S-Series emphasizes driver comfort and safety with its spacious cab and advanced driver assistance systems, making it the perfect choice for premium long-distance transportation.',
       },
       {
-        name: 'Mercedes-Benz <br> MAN Series',
+        name: 'Mercedes-Benz <br> Series',
         description: 'Mercedes-Benz trucks, such as the Actros and Arocs series, are known for their advanced technology, safety, and efficiency. Widely used in long-distance transportation, construction, and municipal services, they are among the leading commercial vehicle brands worldwide.',
       },
     ],
@@ -316,12 +309,12 @@ const homeEnLocale = {
   cardService: [
     {
       title: 'Warehousing Service',
-      imageUrl: 'img/warehouse_new.png',
+      imageUrl: 'img/warehouse01.png',
       bgUrl: 'shelves',
     },
     {
       title: 'Transportation Service',
-      imageUrl: 'img/iconfinder_delivery_fork_lift_forklift_warehouse_moving_box_.png',
+      imageUrl: 'img/truck01.png',
       bgUrl: 'shipping',
     },
     {
@@ -422,13 +415,6 @@ const homeEnLocale = {
     capacity: '600',
     img: 'w04.jpg',
   }, {
-    name: 'Tashkent',
-    address: 'Uzbekistan, Tashkent, Amber District',
-    extra: '28 km from Tashkent City',
-    size: '11000',
-    capacity: '650',
-    img: 'w05.jpg',
-  }, {
     name: 'Bishkek',
     address: 'Tahmina Shop, Sokoluk, Kyrgyzstan',
     extra: '15 km from Bishkek City',
@@ -504,7 +490,7 @@ const homeRuLocale = {
   address:"Китай, провинция Сычуань, город Чэнду, район Шуанлю, Южная часть улицы Чэншуан, дом 1599, Китай (Сычуань. Шуанлю) База экспорта подержанных автомобилей",
   warehouseSection: {
     heading: 'Модель качественного управления складом и интеллектуальная система управления складом',
-    title: 'SJIUS многие годы активно работает в индустрии цепочки поставок, исследуя отношения спроса и предложения всей цепочки поставок с разных сторон: от поставок, логистики, складирования до конечной доставки. Мы запустили финансовые услуги в цепочке поставок — крупный долларовый финансовый пул и гибкие варианты кредитования, предоставляющие надежные двусторонние финансовые услуги для импорта и экспорта.',
+    title: 'Наша интеллектуальная система управления предоставляет реальное время мониторинга, чтобы обеспечить бесперебойную и гладкую логистику. Мы неизменно придерживаемся философии обслуживания, ориентированной на профессионализм, надежность и эффективность, стремясь предоставить нашим клиентам всестороннюю логистическую поддержку. Это помогает нашим клиентам выделяться на конкурентном рынке. Выбирайте нас для более умного и эффективного будущего!',
     description: 'На основе наших семи существующих автомобильных складов под таможенным контролем, расположенных в Хоргосе, Москве, Гамбурге, Антверпене, Ташкенте, Бишкеке и Алматы, наша компания продолжит развивать, создавать и совершенствовать сеть \'Глобального автомобильного склада под таможенным контролем\'.',
     extra: 'SJIUS предлагает эффективные, индивидуализированные и профессиональные складские услуги, обеспечивая защиту каждого автомобиля. Мы приветствуем автомобильных трейдеров со всего мира для обмена опытом и консультаций.',
   },
@@ -551,7 +537,7 @@ const homeRuLocale = {
         description: 'Серии Scania R и S являются флагманами компании Scania. Серия R известна своей мощностью и топливной экономичностью, идеально подходит для дальних перевозок; серия S уделяет больше внимания комфорту и безопасности водителя, имеет просторную кабину и современные системы помощи водителю, что делает её идеальным выбором для премиальных перевозок.',
       },
       {
-        name: 'Mercedes-Benz <br> серия MAN',
+        name: 'Mercedes-Benz <br> серия',
         description: 'Грузовики Mercedes-Benz, такие как Actros и Arocs, известны своей надежностью, безопасностью и высокой эффективностью. Они широко применяются в дальних перевозках, строительстве и муниципальных услугах. Эти грузовики представляют собой передовые технологии и экономию топлива, что делает их одним из ведущих брендов коммерческого транспорта в мире.',
       },
     ],
@@ -567,12 +553,12 @@ const homeRuLocale = {
   cardService: [
     {
       title: 'Складские услуги',
-      imageUrl: 'img/warehouse_new.png',
+      imageUrl: 'img/warehouse01.png',
       bgUrl: 'shelves',
     },
     {
       title: 'Услуги автоперевозок',
-      imageUrl: 'img/iconfinder_delivery_fork_lift_forklift_warehouse_moving_box_.png',
+      imageUrl: 'img/truck01.png',
       bgUrl: 'shipping',
     },
     {
@@ -672,13 +658,6 @@ const homeRuLocale = {
     size: '12000',
     capacity: '600',
     img: 'w04.jpg',
-  }, {
-    name: 'Ташкент',
-    address: 'Узбекистан, Ташкент, Янтарный район',
-    extra: '28 км от города Ташкент',
-    size: '11000',
-    capacity: '650',
-    img: 'w05.jpg',
   }, {
     name: 'Бишкек',
     address: 'Магазин Тахмина, Соколук, Кыргызстан',
